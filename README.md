@@ -17,6 +17,10 @@ The website is simple, fast, and built to give a smooth shopping experience with
 
 ---
 
+## 🎥 Demo Video
+https://github.com/ashwanikansal/printverse/releases/download/v1.0/Demo.mp4
+
+
 ## 🤖 How to Use the Website
 
 ### 1. Browse Artworks  

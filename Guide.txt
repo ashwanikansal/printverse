@@ -58,3 +58,6 @@ create another file say db_helper.py
 
 Dialogflow can't remember past things so we created some dictionary in our backend to keep track of things. E.g. session id for every user until he completes an order. So say we create a buffer dictionary as (session_id : {items:quantity..}) for each session. We can get session id from dialogflow request in outputContexts. To get the session id we created a generic helper file in which we create on function for it.
 
+
+Reference : https://youtu.be/2e5pQqBvGco?si=y_njgfGqKwJHH8jB
+
