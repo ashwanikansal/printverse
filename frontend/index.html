@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>PrintVerse</title>
+  <meta name="description" content="Minimal anime art gallery — A3 prints. Order directly via chatbot." />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">PV</div>
+        <div>
+          <h1>PrintVerse</h1>
+          <p class="lead">Anime Art Gallery</p>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:center">
+        <button class="btn" onclick="openChatbot()">Order Now</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="gallery" id="gallery">
+        <article class="card" data-art='{"name":"Sukuna Hollow Purple","anime":"Jujutsu Kaisen","price":399}'>
+          <a class="thumb" href="#" onclick="openModal(event,this)">
+            <img loading="lazy" alt="Sukuna Hollow Purple" src="assets/21530.png">
+          </a>
+          <div class="meta">
+            <div>
+              <div class="title">Sukuna Hollow Purple</div>
+              <div class="sub">Jujutsu Kaisen • A3</div>
+            </div>
+            <div class="actions">
+              <div class="price">₹399</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="card" data-art='{"name":"Luffy Gear 5","anime":"One Piece","price":399}'>
+          <a class="thumb" href="#" onclick="openModal(event,this)">
+            <img loading="lazy" alt="Luffy Gear 5" src="assets/18363.jpg">
+          </a>
+          <div class="meta">
+            <div>
+              <div class="title">Luffy Gear 5</div>
+              <div class="sub">One Piece • A3</div>
+            </div>
+            <div class="actions">
+              <div class="price">₹399</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="card" data-art='{"name":"Tanjiro Water Breathing","anime":"Demon Slayer","price":399}'>
+          <a class="thumb" href="#" onclick="openModal(event,this)">
+            <img loading="lazy" alt="Tanjiro Water Breathing" src="assets/10054.jpg">
+          </a>
+          <div class="meta">
+            <div>
+              <div class="title">Tanjiro Water Breathing</div>
+              <div class="sub">Demon Slayer • A3</div>
+            </div>
+            <div class="actions">
+              <div class="price">₹399</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="card" data-art='{"name":"Itachi Moon Stare","anime":"Naruto","price":399}'>
+          <a class="thumb" href="#" onclick="openModal(event,this)">
+            <img loading="lazy" alt="Itachi Moon Stare" src="assets/19971.jpg">
+          </a>
+          <div class="meta">
+            <div>
+              <div class="title">Itachi Moon Stare</div>
+              <div class="sub">Naruto • A3</div>
+            </div>
+            <div class="actions">
+              <div class="price">₹399</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="card" data-art='{"name":"Roronoa Zoro Sword","anime":"One Piece","price":399}'>
+          <a class="thumb" href="#" onclick="openModal(event,this)">
+            <img loading="lazy" alt="Roronoa Zoro Sword" src="assets/10544.jpg">
+          </a>
+          <div class="meta">
+            <div>
+              <div class="title">Roronoa Zoro Sword</div>
+              <div class="sub">One Piece • A3</div>
+            </div>
+            <div class="actions">
+              <div class="price">₹399</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="card" data-art='{"name":"Saitama Minimal Punch","anime":"One Punch Man","price":399}'>
+          <a class="thumb" href="#" onclick="openModal(event,this)">
+            <img loading="lazy" alt="Saitama Minimal Punch" src="assets/5031.png">
+          </a>
+          <div class="meta">
+            <div>
+              <div class="title">Saitama Minimal Punch</div>
+              <div class="sub">One Punch Man • A3</div>
+            </div>
+            <div class="actions">
+              <div class="price">₹399</div>
+            </div>
+          </div>
+        </article>
+
+      </section>
+    </main>
+
+    <footer>
+      <div class="muted">All prints are A3 matte. Click any artwork to view and order via chatbot.</div>
+    </footer>
+  </div>
+
+  <!-- Modal / Lightbox -->
+  <div class="modal-backdrop" id="modalBackdrop" onclick="closeModal(event)">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" onclick="event.stopPropagation()">
+      <div class="modal-left">
+        <img id="modalImage" alt="">
+      </div>
+      <div class="modal-right">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div>
+            <h2 id="modalTitle">Artwork title</h2>
+            <div class="muted" id="modalAnime">Anime • A3</div>
+          </div>
+          <div>
+            <div class="price" id="modalPrice">₹399</div>
+          </div>
+        </div>
+
+        <p class="muted" id="modalDesc">High-quality matte A3 print. Black frame available as an add-on.</p>
+
+        <div style="display:flex;gap:10px;margin-top:8px">
+          <button class="btn" id="orderBtn" onclick="orderNow()">Order</button>
+          <button class="btn ghost" onclick="closeModal()">Close</button>
+        </div>
+
+        <div style="margin-top:14px;color:#334155;font-size:13px">
+          <strong>Shipping</strong>
+          <div class="muted" style="margin-top:6px">We ship across India. Shipping calculated at checkout.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- ========== CHAT WIDGET (uses your Dialogflow iframe) ========== -->
+<!-- Replace nothing here — the code already uses your iframe URL -->
+<div id="chatWidget" class="chat-widget closed" aria-hidden="true">
+  <div class="chat-header">
+    <div class="chat-title">Chat & Order</div>
+    <button class="chat-close" onclick="closeChat()" aria-label="Close chat">✕</button>
+  </div>
+
+  <!-- Dialogflow iframe you provided -->
+  <iframe id="chatIframe"
+          src="https://console.dialogflow.com/api-client/demo/embedded/7a12dd70-7b1c-4286-b77e-71ff5ce33675"
+          title="Chatbot"
+          frameborder="0"
+          sandbox="allow-scripts allow-same-origin allow-forms"></iframe>
+</div>
+
+<!-- Floating chat button (visible on mobile and as fallback) -->
+<button id="chatFab" class="chat-fab" onclick="openChatbot()" aria-label="Open chat">💬</button>
+
+  <script src="script.js"></script>
+</body>
+</html>

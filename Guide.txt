@@ -1,0 +1,60 @@
+First login on dialogflow.
+Create agent -> chopper-chatbot-for-art-orders
+
+------------------------INTENTS--------------------------------
+
+dialogflow will create internally more phrases over the ones which we provide.
+dialogflow will internally classify the content with its ML model.
+
+Created following intents : 
+
+default welcome intent
+default fallout intent
+new.order 
+-> order.add (here we will specify the entities and can mark them as compulsory)
+-> order.remove 
+track.order
+
+Created following entities:
+
+artwork
+
+Created context : 
+
+ongoing order
+ongoing tracking
+
+------------------------Setting up the database------------------
+
+Set up the database : 
+
+Tables : artworks, order_tracking, orders
+
+-----------------------BAckend--------------
+
+install python first.
+
+create a virtual environement. In VSCode, press Ctrl+shift+P --> Python:Create environment --> choose the python version
+
+install fastApi : !pip install fastapi[all]
+
+install mysqlConnector : !pip install mysql-connector-python
+
+or can also make a requirements.txt file and run it as !pip install -r requirements.txt
+
+Create a main.py file and put the code there.
+
+To run it : uvicorn main:app --reload
+
+Connecting dialogflow with backend?
+-> Go to fulfillment in dialogflow and enable webhook.
+-> It will ask for url, which is http:localhost:8000 something, but it won't accept http. so we need ngrok, which provide a temporary https address, which will redirect us to our localhost only.
+
+How it works?
+For any intent after which we need to go to backend for any processing on that intent we enable webhook fulfillment. Then request goes to the url which then goes to backend.
+
+Connecting backend with database?
+create another file say db_helper.py
+
+Dialogflow can't remember past things so we created some dictionary in our backend to keep track of things. E.g. session id for every user until he completes an order. So say we create a buffer dictionary as (session_id : {items:quantity..}) for each session. We can get session id from dialogflow request in outputContexts. To get the session id we created a generic helper file in which we create on function for it.
+
